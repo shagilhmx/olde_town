@@ -397,7 +397,7 @@ function openApi(event, on) {
       }),
     };
     axios
-      .post("https://api-dcrm.fincity.com/open/opportunity", body)
+      .post("http://api-dcrm-dev.fincity.in/open/opportunity", body)
       .then((res) => {
         gtag_report_conversion();
         if (downloadPdf === true) {
@@ -510,7 +510,7 @@ function detectLocation(e, check) {
         };
 
         axios
-          .post(`https://api-dcrm.fincity.com/open/opportunity/verify`, body)
+          .post(`http://api-dcrm-dev.fincity.in/open/opportunity/verify`, body)
           .then((res) => {
             document.getElementById(
               check == 1
@@ -594,7 +594,7 @@ function resendOtp(e, check) {
   e.stopPropagation();
   axios
     .post(
-      `https://api-dcrm.fincity.com/open/opportunity/send-otp?token=${responseData?.data?.token}`
+      `http://api-dcrm-dev.fincity.in/open/opportunity/send-otp?token=${responseData?.data?.token}`
     )
     .then((res) => {
       document.querySelector(check ? "#resendOtp" : "#resendOtp1").innerText =
@@ -624,7 +624,7 @@ function verfiyOtp(e, check) {
     otp: otp,
   };
   axios
-    .post(`https://api-dcrm.fincity.com/open/opportunity/verify`, body)
+    .post(`http://api-dcrm-dev.fincity.in/open/opportunity/verify`, body)
     .then((res) => {
       document.getElementById(
         check == 1
@@ -644,7 +644,7 @@ function verfiyOtp(e, check) {
         if (count === 0) {
           let deviceType = getDeviceType();
           clearInterval(countdown);
-          window.location.href = `https://dcrm.fincity.com/?&user=consumer&device-type=${deviceType}&token=${res?.data?.consumerToken}&isLandingPage=true`;
+          window.location.href = `https://dcrm-dev.fincity.in/?&user=consumer&device-type=${deviceType}&token=${res?.data?.consumerToken}&isLandingPage=true`;
         }
       }, 1000);
     })
